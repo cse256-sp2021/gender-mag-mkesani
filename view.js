@@ -1,6 +1,9 @@
 // ---- Define your dialogs  and panels here ----
 
+//calliing define_new_effective_permissions function and storing the result in a variable
+newPanel = define_new_effective_permissions('panel1', add_info_col = true, which_permissions = null);
 
+$('#sidepanel').append(newPanel);
 
 // ---- Display file structure ----
 
@@ -72,3 +75,4 @@ $('.permbutton').click( function( e ) {
 
 // ---- Assign unique ids to everything that doesn't have an ID ----
 $('#html-loc').find('*').uniqueId() 
+
