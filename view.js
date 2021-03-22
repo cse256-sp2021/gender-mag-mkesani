@@ -1,9 +1,37 @@
 // ---- Define your dialogs  and panels here ----
 
-//calliing define_new_effective_permissions function and storing the result in a variable
+//calliing define_new_effective_permissions function and storing the result in a variable (Effective Permissions Panel step 1/2)
 newPanel = define_new_effective_permissions('panel1', add_info_col = true, which_permissions = null);
 
 $('#sidepanel').append(newPanel);
+
+//Effective Permissions Panel step 3/4 
+newUserSelect = define_new_user_select_field('panel1', 'Select User', on_user_change = function(selected_user){
+    $('#panel1').attr('username', selected_user)
+});
+
+$('#sidepanel').append(newUserSelect);
+
+$('#panel1').attr('filepath', '/C/presentation_documents/important_file.txt');
+
+//Permissions Explanation step 1
+
+dialog1 = define_new_dialog('panel1', title='hello');
+
+//Permissions Explanation step 2-4
+$('.perm_info').click(function(){
+    dialog1.dialog('open');
+    //console.log($('#panel1').attr('filepath'));
+    //console.log($('#panel1').attr('username'));
+    //console.log($(this).attr('permission_name'));
+    //file = path_to_file[$('#panel1').attr('filepath')];
+    //user = all_users[$('#panel1').attr('username')];
+    explain1 = allow_user_action(path_to_file[$('#panel1').attr('filepath')], all_users[$('#panel1').attr('username')], $(this).attr('permission_name'), explain_why = false);
+    dialog1.html(get_explanation_text(explain1));
+})
+
+
+//npm run serve
 
 // ---- Display file structure ----
 
