@@ -6,7 +6,7 @@ newPanel = define_new_effective_permissions('panel1', add_info_col = true, which
 $('#sidepanel').append(newPanel);
 
 //Effective Permissions Panel step 3/4 
-newUserSelect = define_new_user_select_field('panel1', 'Select User', on_user_change = function(selected_user){
+newUserSelect = define_new_user_select_field('panel1', 'Select A User To View Their Permissions', on_user_change = function(selected_user){
     $('#panel1').attr('username', selected_user)
 });
 
@@ -26,7 +26,7 @@ $('.perm_info').click(function(){
     //console.log($(this).attr('permission_name'));
     //file = path_to_file[$('#panel1').attr('filepath')];
     //user = all_users[$('#panel1').attr('username')];
-    explain1 = allow_user_action(path_to_file[$('#panel1').attr('filepath')], all_users[$('#panel1').attr('username')], $(this).attr('permission_name'), explain_why = false);
+    explain1 = allow_user_action(path_to_file[$('#panel1').attr('filepath')], all_users[$('#panel1').attr('username')], $(this).attr('permission_name'), explain_why = true);
     dialog1.html(get_explanation_text(explain1));
 })
 
