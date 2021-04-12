@@ -15,7 +15,7 @@ perm_dialog = define_new_dialog('permdialog', title='Permissions', options = {
             text: "Return to Previous",
             id: "perm-dialog-ok-button",
             click: function() {
-                $( this ).dialog( "close" );
+                $( this ).dialog( "close");
             }
         },
         Advanced: {
@@ -67,7 +67,8 @@ perm_add_user_select.find('span').hide()// Cheating a bit - just show the button
 // -- Make button to remove currently-selected user; also make some dialogs that may pop up when user clicks this. --
 
 // Make a dialog which shows up when they're not allowed to remove that user from that file (because of inheritance)
-cant_remove_dialog = define_new_dialog('cant_remove_inherited_dialog', 'Security', {
+//cant_remove_dialog = define_new_dialog('cant_remove_inherited_dialog', 'Security', {
+cant_remove_dialog = define_new_dialog('cant_remove_inherited_dialog', 'Important: Please Read', {
     buttons: {
         OK: {
             text: "OK",
@@ -355,7 +356,8 @@ $('#adv_perm_inheritance').change(function(){
     }
     else {
         // has just been turned off - pop up dialog with add/remove/cancel
-        $(`<div id="add_remove_cancel" title="Security">
+        //$(`<div id="add_remove_cancel" title="Security">
+        $(`<div id="add_remove_cancel" title="Important: Please Read">
             Warning: if you proceed, inheritable permissions will no longer propagate to this object.<br/>
             - Click Add to convert and add inherited parent permissions as explicit permissions on this object (this is useful when trying to remove a user from the permissions for this object)<br/>
             - Click Remove to remove inherited parent permissions from this object for all users<br/>
@@ -411,7 +413,9 @@ $('#adv_perm_replace_child_permissions').change(function(){
         // we only care when it's been checked (nothing happens on uncheck) (this should really not be a checkbox...)
         let filepath = $('#advdialog').attr('filepath')
         let file_obj = path_to_file[filepath]
-        $(`<div id="replace_perm_dialog" title="Security">
+        
+        //$(`<div id="replace_perm_dialog" title="Security">
+        $(`<div id="replace_perm_dialog" title="Important: Please Read">
             This will replace explicitly defined permissions on all descendants of this object with inheritable permissions from ${file_obj.filename}.<br/>
             Do you wish to continue?
         </div>`).dialog({
