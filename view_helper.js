@@ -499,6 +499,34 @@ function define_new_user_select_field(id_prefix, select_button_text, on_user_cha
     return sel_section
 }
 
+
+//NEW FUNCTIION SO YOU CAN SELECT FILE
+function define_new_file_select_field(id_prefix, select_button_text, on_file_change = function(selected_file){}){
+    // Make the element:
+    let sel_section = $(`<div id="${id_prefix}_line" class="section">
+            <span id="${id_prefix}_field" class="ui-widget-content" style="width: 80%;display: inline-block;">&nbsp</span>
+            <button id="${id_prefix}_button" class="ui-button ui-widget ui-corner-all">${select_button_text}</button>
+        </div>`)
+
+    // Open user select on button click:
+    
+    /*
+    sel_section.find(`#${id_prefix}_button`).click(function(){
+        open_user_select_dialog(`${id_prefix}_field`)
+    })*/
+
+    // Set up an observer to watch the attribute change and change the field
+    let field_selector = sel_section.find(`#${id_prefix}_field`)
+    define_attribute_observer(field_selector, 'selected_file', function(new_file){
+        field_selector.text(new_file)
+        // call the function for additional processing of user change:
+        on_user_change(new_file)
+    })
+
+    return sel_section
+}
+
+
 //---- misc. ----
 
 // Get a (very simple) text representation of a permissions explanation
@@ -509,6 +537,24 @@ function get_explanation_text(explanation) {
     permission set for file: ${explanation.file_responsible?get_full_path(explanation.file_responsible):'N/A'}
     and for user: ${ explanation.ace_responsible ? get_user_name(explanation.ace_responsible.who) : 'N/A' }
     ${ explanation.text_explanation ? `(${explanation.text_explanation})`  : '' }   `
+
+    //console.log(explanation.is_allowed);
+    //console.log(${explanation.file_responsible?get_full_path(explanation.file_responsible):'N/A');
+    //console.log(explanation.ace_responsible.who);
+    //console.log(explanation.text_explanation);
+   
+   
+    /*if (explanation.is_allowed ==true){
+        var allowed = "";
+    }else if (explanation.is_allowed ==false){
+        var allowed = "not ";
+    }else{
+        var allowed = "N/A"
+    }
+    
+    return "This action is " + allowed + "because of the permissions set for " + ${ explanation.ace_responsible ? get_user_name(explanation.ace_responsible.who) : 'N/A'} + "for the file located at " + ${explanation.file_responsible?get_full_path(explanation.file_responsible):'N/A'} + ".";*/
+    
+
 }
 
 //---- some universal HTML set-up so you don't have to do it in each wrapper.html ----
