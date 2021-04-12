@@ -12,11 +12,74 @@ newUserSelect = define_new_user_select_field('panel1', 'Select A User To View Th
 
 $('#sidepanel').append(newUserSelect);
 
+/*var which_file = document.createElement("INPUT");
+var which_file_text = document.createElement("p");
+which_file.setAttribute("type", "text");
+which_file.setAttribute("value", "");
+which_file.setAttribute("id", "file_input");
+which_file_text.setAttribute("id", "file_input_text");
+
+$('#sidepanel').append(which_file_text);
+$('#sidepanel').append(which_file);
+document.getElementById("file_input").style.height = "30px";
+document.getElementById("file_input").style.width = "400px";
+document.getElementById("file_input").style.marginTop = "400px";
+document.getElementById("file_input_text").style.innerHTML = "Please choose one of the following filepaths for which you would like to view permissions and copy and paste the path into the input field ";
+*/
+
+/*
+var which_file_form = document.createElement("form");
+which_file_form.setAttribute("id", "file_input_form");
+//document.getElementById("file_input_form").style.width = "40px";
+$('#sidepanel').append(which_file_form);
+
+
+
+var which_file_select = document.createElement("select");
+which_file_select.setAttribute("id", "file_input_select");
+$('#file_input_form').append(which_file_select);
+
+
+var option1 = document.createElement("option");
+option1.setAttribute("value", "apple");
+//option1.setAttribute("id", "option1");
+//document.getElementById("option1").innerHTML = "Apple";
+$('#file_input_select').appendChild(option1);
+*/
+
+/*
+var option2 = document.createElement("option");
+option2.setAttribute("value", "banana");
+$('#file_input_select').append(option2);
+
+var option3 = document.createElement("option");
+option3.setAttribute("value", "orange");
+$('#file_input_select').append(option3);
+*/
+
+/*
+<form>
+  Select your favorite fruit:
+  <select id="file_select">
+    <option value="apple">Apple</option>
+    <option value="orange">Orange</option>
+    <option value="pineapple">Pineapple</option>
+    <option value="banana">Banana</option>
+  </select>
+</form>
+*/
+
+//document.getElementById("file_select").value
+
+//$('#panel1').attr('filepath', document.getElementById("mySelect").value);
+
+
+
 $('#panel1').attr('filepath', '/C/presentation_documents/important_file.txt');
 
 //Permissions Explanation step 1
 
-dialog1 = define_new_dialog('panel1', title='hello');
+dialog1 = define_new_dialog('panel1', title='Permissions Info');
 
 //Permissions Explanation step 2-4
 $('.perm_info').click(function(){
